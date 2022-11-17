@@ -1,9 +1,13 @@
 import DataTable from 'react-data-table-component';
 import NavBar from '../components/NavBar';
 import SideBar from '../components/SideBar';
-import { Table, Column, HeaderCell, Cell } from 'rsuite-table';
+import { useState, useMemo, Fragment } from 'react';
+// import { Table, Column, HeaderCell, Cell } from 'rsuite-table';
 // import 'rsuite-table/lib/less/index.less'; 
-import { useState } from 'react';
+// import DataTable from 'react-data-table-component';
+import HTMLReactParser from 'html-react-parser';
+import Select from 'react-select';
+import { useEffect } from 'react';
 const columns = [
     {
         name: 'Summary',
@@ -22,126 +26,71 @@ const columns = [
     },
     {
         name: 'Number',
-        selector: row => row.number,
+        selector: row => <a href={row.number}>Download</a>,
     },
 ];
 
-const data = [
-    {
-        id: 1,
-        title: 'Beetlejuice',
-        year: '1988',
-    },
-    {
-        id: 2,
-        title: 'Ghostbusters',
-        year: '1984',
-    },
-]
-
 function Announcements({ menuItems, announcementsItems }) {
-    console.log(announcementsItems)
-    var outPut = [];
 
-        for (let i = 0; i < announcementsItems.data.length; i++) {
-            outPut.push(announcementsItems.data[i].attributes)
-        }
-    console.log(outPut);
-    const [sortColumn, setSortColumn] = useState('id');
-  const [sortType, setSortType] = useState('asc');
-  const [loading, setLoading] = useState(false);
+    //hydration error
+        // for (let i = 0; i < announcementsItems.data.length; i++) {
+        //     var outPut = outPut.push(announcementsItems.data[i].attributes)
+        // }
 
-  const sortData = () => {
-    if (sortColumn && sortType) {
-      return data.sort((a, b) => {
-        let x = a[sortColumn];
-        let y = b[sortColumn];
-        if (typeof x === 'string') {
-          x = x.charCodeAt();
-        }
-        if (typeof y === 'string') {
-          y = y.charCodeAt();
-        }
-        if (sortType === 'asc') {
-          return x - y;
-        } else {
-          return y - x;
-        }
-      });
-    }
-    return data;
-  };
-
-  const handleSortColumn = (sortColumn, sortType) => {
-    setLoading(true);
-
-    setTimeout(() => {
-      setLoading(false);
-      setSortColumn(sortColumn);
-      setSortType(sortType);
-    }, 500);
-  };
-
-  return (
-    <Table
-      height={400}
-      data={sortData()}
-      sortColumn={sortColumn}
-      sortType={sortType}
-      onSortColumn={handleSortColumn}
-      loading={loading}
-      onRowClick={data => {
-        console.log(data);
-      }}
-    >
-      <Column width={70} align="center" fixed sortable>
-        <HeaderCell>Id</HeaderCell>
-        <Cell dataKey="id" />
-      </Column>
-
-      <Column width={130} fixed sortable>
-        <HeaderCell
-          renderSortIcon={sortType => {
-            console.log(sortType);
-
-            if (sortType === 'asc') {
-              return 1;
-            } else if (sortType === 'desc') {
-              return 2;
+    const options = [{value: '2022', label: '2022'}, {value: '2021', label: '2021'}]
+    const FilterComponent = ({ filterText, onFilter, onClear, defaultValue }) => (
+            <>
+                <Select
+                    value={options.map(item => filterText === item.value ? item : '')}
+                    onChange={onFilter}
+                    options={options}
+                    defaultValue={defaultValue}
+                />
+                <div type="button" onClick={onClear}>
+                    X
+                </div>
+            </>
+            
+        
+    );
+     
+        const [filterText, setFilterText] = useState('');
+        const [resetPaginationToggle, setResetPaginationToggle] = useState(false);
+        const filteredItems = outPut.filter(
+                item => item.announcement && item.announcement.includes(filterText)
+        );
+        console.log(filteredItems)
+        const subHeaderComponentMemo = useMemo(() => {
+            const handleClear = () => {
+                if (filterText) {
+                        setResetPaginationToggle(!resetPaginationToggle);
+                        setFilterText('');
+                }
             }
+            return (
+                <FilterComponent onFilter={e => setFilterText(e.value)} onClear={handleClear} filterText={filterText} />
+            );
+        }, [filterText, resetPaginationToggle]);
+    
+    return (
+      <div className="relative w-full">
+        <NavBar />
+        <div className="md:flex relative">
+          <SideBar props={menuItems} />
 
-            return 3;
-          }}
-        >
-          First Name
-        </HeaderCell>
-        <Cell dataKey="firstName" />
-      </Column>
-      <Column width={130} sortable>
-        <HeaderCell>Last Name</HeaderCell>
-        <Cell dataKey="lastName" />
-      </Column>
-
-      <Column width={200} sortable>
-        <HeaderCell>City</HeaderCell>
-        <Cell dataKey="city" />
-      </Column>
-
-      <Column width={200} sortable>
-        <HeaderCell>Street</HeaderCell>
-        <Cell dataKey="street" />
-      </Column>
-
-      <Column width={200} sortable>
-        <HeaderCell>Company</HeaderCell>
-        <Cell dataKey="company" />
-      </Column>
-
-      <Column width={200}>
-        <HeaderCell>Email</HeaderCell>
-        <Cell dataKey="email" />
-      </Column>
-    </Table>
+          <div className='mt-20 w-full'>
+            <DataTable 
+                columns={columns} 
+                data={filteredItems}
+                pagination
+                paginationResetDefaultPage={resetPaginationToggle} // optionally, a hook to reset pagination to page 1
+                subHeader
+                subHeaderComponent={subHeaderComponentMemo}
+                persistTableHead 
+            />
+          </div>
+        </div>
+      </div>
     );
 };
 
