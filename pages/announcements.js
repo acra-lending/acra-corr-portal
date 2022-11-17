@@ -65,7 +65,7 @@ const Announcements = ({ menuItems, announcementsItems }) => {
           const handleClear = () => {
             if (filterText) {
               setResetPaginationToggle(!resetPaginationToggle);
-              setFilterText("");
+              setFilterText('');
             }
           };
 
