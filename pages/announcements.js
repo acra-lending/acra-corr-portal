@@ -1,13 +1,9 @@
 import DataTable from 'react-data-table-component';
 import NavBar from '../components/NavBar';
 import SideBar from '../components/SideBar';
-import { useState, useMemo, Fragment } from 'react';
-// import { Table, Column, HeaderCell, Cell } from 'rsuite-table';
-// import 'rsuite-table/lib/less/index.less'; 
-// import DataTable from 'react-data-table-component';
-import HTMLReactParser from 'html-react-parser';
+import { useState, useMemo, useEffect } from 'react';
 import Select from 'react-select';
-import { useEffect } from 'react';
+
 const columns = [
     {
         name: 'Summary',
@@ -30,67 +26,79 @@ const columns = [
     },
 ];
 
-function Announcements({ menuItems, announcementsItems }) {
+const Announcements = ({ menuItems, announcementsItems }) => {
 
-    //hydration error
-        // for (let i = 0; i < announcementsItems.data.length; i++) {
-        //     var outPut = outPut.push(announcementsItems.data[i].attributes)
-        // }
-
-    const options = [{value: '2022', label: '2022'}, {value: '2021', label: '2021'}]
-    const FilterComponent = ({ filterText, onFilter, onClear, defaultValue }) => (
-            <>
-                <Select
-                    value={options.map(item => filterText === item.value ? item : '')}
-                    onChange={onFilter}
-                    options={options}
-                    defaultValue={defaultValue}
-                />
-                <div type="button" onClick={onClear}>
-                    X
-                </div>
-            </>
-            
-        
+    const [mounted, setMounted] = useState(false);
+    const [filterText, setFilterText] = useState('');
+    const [resetPaginationToggle, setResetPaginationToggle] = useState(false);
+    const options = [{value: '2022', label: '2022'}, {value: '2021', label: '2021'}];
+    const items = announcementsItems.data.map(item => item.attributes);
+    
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+    
+    const FilterComponent = ({
+      filterText,
+      onFilter,
+      onClear,
+      defaultValue,
+    }) => (
+      <>
+        <Select
+          value={options.map((item) => (filterText === item.value ? item : ""))}
+          onChange={onFilter}
+          options={options}
+          defaultValue={defaultValue}
+        />
+        <div type="button" onClick={onClear}>
+          X
+        </div>
+      </>
     );
      
-        const [filterText, setFilterText] = useState('');
-        const [resetPaginationToggle, setResetPaginationToggle] = useState(false);
-        const filteredItems = outPut.filter(
+        const filteredItems = items.filter(
                 item => item.announcement && item.announcement.includes(filterText)
         );
-        console.log(filteredItems)
+
         const subHeaderComponentMemo = useMemo(() => {
-            const handleClear = () => {
-                if (filterText) {
-                        setResetPaginationToggle(!resetPaginationToggle);
-                        setFilterText('');
-                }
+          const handleClear = () => {
+            if (filterText) {
+              setResetPaginationToggle(!resetPaginationToggle);
+              setFilterText("");
             }
-            return (
-                <FilterComponent onFilter={e => setFilterText(e.value)} onClear={handleClear} filterText={filterText} />
-            );
+          };
+
+          return (
+            <FilterComponent
+              onFilter={(e) => setFilterText(e.value)}
+              onClear={handleClear}
+              filterText={filterText}
+            />
+          );
         }, [filterText, resetPaginationToggle]);
     
-    return (
+    return mounted ? (
       <div className="relative w-full">
         <NavBar />
         <div className="md:flex relative">
           <SideBar props={menuItems} />
 
-          <div className='mt-20 w-full'>
-            <DataTable 
-                columns={columns} 
-                data={filteredItems}
-                pagination
-                paginationResetDefaultPage={resetPaginationToggle} // optionally, a hook to reset pagination to page 1
-                subHeader
-                subHeaderComponent={subHeaderComponentMemo}
-                persistTableHead 
+          <div className="mt-20 w-full">
+            <DataTable
+              columns={columns}
+              data={filteredItems}
+              pagination
+              paginationResetDefaultPage={resetPaginationToggle}
+              subHeader
+              subHeaderComponent={subHeaderComponentMemo}
+              persistTableHead
             />
           </div>
         </div>
       </div>
+    ) : (
+      <div />
     );
 };
 
