@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import SideBar from "../components/SideBar"
 import Navbar from '../components/NavBar'
 import DashLinks from "../components/DashLinks";
-import UsefulLinks from "../components/UsefulLinks";
 import Login from '../components/Login';
 
 export default function Home({menuItems, dashboardItems, useLinksItems}) {
@@ -16,7 +15,7 @@ export default function Home({menuItems, dashboardItems, useLinksItems}) {
 
   // const router = useRouter();
   return (
-    <div className="relative w-full h-full bg-[url('https://7abe-107-194-134-60.ngrok.io/uploads/careers_navybg_b874f0bbad.jpg')]">
+    <div className="relative w-full h-full">
       <Navbar />
       <main>
             {isLogged ? (
@@ -31,7 +30,6 @@ export default function Home({menuItems, dashboardItems, useLinksItems}) {
 
                     <DashLinks props={dashboardItems}/>
                     <div>
-                      <UsefulLinks props={useLinksItems}/>
                     </div>
                   </div>
                 </div>

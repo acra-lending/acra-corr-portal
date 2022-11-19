@@ -3,7 +3,8 @@ import NavBar from '../components/NavBar';
 import SideBar from '../components/SideBar';
 import { useState, useMemo, useEffect } from 'react';
 import Select from 'react-select';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faX } from '@fortawesome/free-solid-svg-icons';
 const columns = [
     {
         name: 'Summary',
@@ -22,12 +23,17 @@ const columns = [
     },
     {
         name: 'Number',
-        selector: row => <a href={row.number}>Download</a>,
+        selector: row => row.number,
+        sortable: true
+    },
+    {
+        name: 'Action',
+        selector: row => <a href={row.url} className="hover:bg-gray-50 text-[#0033A1] font-medium py-2 px-4 border border-[#0033A1] hover:border-transparent rounded no-underline">Download</a>,
     },
 ];
 
 const Announcements = ({ menuItems, announcementsItems }) => {
-
+    console.log(announcementsItems)
     const [mounted, setMounted] = useState(false);
     const [filterText, setFilterText] = useState('');
     const [resetPaginationToggle, setResetPaginationToggle] = useState(false);
@@ -44,17 +50,15 @@ const Announcements = ({ menuItems, announcementsItems }) => {
       onClear,
       defaultValue,
     }) => (
-      <>
+      <div className='flex items-center gap-4'>
         <Select
           value={options.map((item) => (filterText === item.value ? item : ""))}
           onChange={onFilter}
           options={options}
           defaultValue={defaultValue}
         />
-        <div type="button" onClick={onClear}>
-          X
-        </div>
-      </>
+        <FontAwesomeIcon icon={faX} type="button" onClick={onClear} />
+      </div>
     );
      
         const filteredItems = items.filter(
@@ -84,7 +88,7 @@ const Announcements = ({ menuItems, announcementsItems }) => {
         <div className="md:flex relative">
           <SideBar props={menuItems} />
 
-          <div className="mt-20 w-full">
+          <div className="mt-20 w-full overflow-x-scroll">
             <DataTable
               columns={columns}
               data={filteredItems}
@@ -105,7 +109,7 @@ const Announcements = ({ menuItems, announcementsItems }) => {
 export async function getServerSideProps() {
     const [menuResponse, announcementsResponse] = await Promise.all([
       fetch(`${process.env.BASE_URL}/corr-portal-menu-items`),
-      fetch(`${process.env.BASE_URL}/corr-portal-annoucements`)
+      fetch(`${process.env.BASE_URL}/corr-portal-annoucements?pagination[limit]=50`)
     ]); 
   
       const [menuItems, announcementsItems] = await Promise.all([
