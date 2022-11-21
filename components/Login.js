@@ -74,7 +74,7 @@ const Login = () => {
                             IMPORTANT:&nbsp;
                         </strong>
                         <em>
-                            Brokers must log in below to upload loan conditions to your assigned Account Manager.
+                            Correspondents must log in below to upload loan conditions to your assigned Account Manager.
                         </em>
                     </mark>
                 </div>

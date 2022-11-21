@@ -33,7 +33,6 @@ const columns = [
 ];
 
 const Announcements = ({ menuItems, announcementsItems }) => {
-    console.log(announcementsItems)
     const [mounted, setMounted] = useState(false);
     const [filterText, setFilterText] = useState('');
     const [resetPaginationToggle, setResetPaginationToggle] = useState(false);
@@ -116,7 +115,7 @@ export async function getServerSideProps() {
         menuResponse.json(),
         announcementsResponse.json()
       ]);
-      
+
       return { props: { menuItems, announcementsItems } };
 }
 
