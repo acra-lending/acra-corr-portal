@@ -28,7 +28,7 @@ const columns = [
     },
     {
         name: 'Action',
-        selector: row => <a href={row.url} className="hover:bg-gray-50 text-[#0033A1] font-medium py-2 px-4 border border-[#0033A1] hover:border-transparent rounded no-underline">Download</a>,
+        selector: row => <a href={row.url} className=" text-[#0033A1] font-medium no-underline">Download</a>,
     },
 ];
 
