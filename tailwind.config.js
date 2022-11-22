@@ -10,7 +10,8 @@ module.exports = {
     extend: {
       backgroundImage: {
         'preScreen': "url('/pre-screen-instructions.jpg')",
-      }
+        'index': "url('/bg.svg')"
+      },
     },
   },
   plugins: [

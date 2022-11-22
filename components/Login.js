@@ -68,18 +68,16 @@ const Login = () => {
                     />
                 </div>
                 )}
-                <div className='py-8'>
-                    <mark className='bg-[#ffff00]'>
+
+                <div className='p-8 max-w-md bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 md:p-8'>
+                <div className='pb-3 text-center'>
                         <strong>
-                            IMPORTANT:&nbsp;
+                            IMPORTANT:&nbsp;<br></br>
                         </strong>
                         <em>
                             Correspondents must log in below to upload loan conditions to your assigned Account Manager.
                         </em>
-                    </mark>
                 </div>
-
-                <div className='p-8 max-w-md bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 md:p-8'>
                     <Formik
                         initialValues={initialValues}
                         validationSchema={validationSchema}

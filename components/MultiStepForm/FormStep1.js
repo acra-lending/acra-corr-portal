@@ -54,7 +54,7 @@ export default function FormStep1(props) {
           htmlFor="aeSelect"
           className="block mb-2 text-sm font-medium text-gray-900"
         >
-            Acra Lending Account Executive *
+            Acra Lending Correspondent *
         </label>
         <select
           id="aeSelect"

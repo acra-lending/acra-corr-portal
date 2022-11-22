@@ -9,7 +9,7 @@ import { faUserTie, faCreditCard, faFileInvoiceDollar, faLightbulb } from '@fort
 // import card from './'
 const prisma = new PrismaClient();
 
-function preScreenRequest ({ menuItems, aeList }) {
+function bankStatementAnalysis ({ menuItems, aeList }) {
     const router = useRouter();
 
     const [isLogged, setIsLogged] = useState();
@@ -102,4 +102,4 @@ export async function getServerSideProps() {
     };
 }
 
-export default preScreenRequest;
+export default bankStatementAnalysis;
