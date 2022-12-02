@@ -64,10 +64,10 @@ export default function FormStep1(props) {
           defaultValue={values.aeSelect}
         >
           <option value="" disabled>---</option>
-          {props.aeList.map((ae, i) => (
+          {props?.aeList.data.map((ae) => (
             <option 
-              key={i} 
-              value={ae.firstname + ' ' + ae.lastname}>{ae.firstname + ' ' + ae.lastname}
+              key={ae.id} 
+              value={ae.attributes.name}>{ae.attributes.name}
             </option>
           ))}
         </select>

@@ -26,14 +26,21 @@ const Login = () => {
         axiosWithBaseURL.post('/api/auth/local', values)
             .then(response => {
                 console.log(response.data);
-                const jwt = response.data.jwt;
-                const firstname = response.data.user.firstname;
+                if(response.data.user.roleType.includes('Correspondent')) {
+                    const jwt = response.data.jwt;
+                    const firstname = response.data.user.firstname;
+                    const roleType = response.data.user.roleType;
+    
+                    localStorage.setItem('jwt', jwt);
+                    localStorage.setItem('firstname', firstname);
+                    localStorage.setItem('roleType', roleType);
+    
+                    // push('/');
+                    window.location.replace('/');
+                } else {
+                    setAlert(['alert', 'Incorrect Credentials'])
+                }
 
-                localStorage.setItem('jwt', jwt);
-                localStorage.setItem('firstname', firstname);
-
-                // push('/');
-                window.location.replace('/');
                 resetForm();
             })
             .catch(error => {
