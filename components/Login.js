@@ -4,6 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 // import { useRouter } from 'next/router'; 
 import Link from 'next/link';
 import axiosWithBaseURL from '../lib/nextstrapi-axios';
+import {Oval} from "react-loader-spinner";
 
 
 const Login = () => {
@@ -26,14 +27,21 @@ const Login = () => {
         axiosWithBaseURL.post('/api/auth/local', values)
             .then(response => {
                 console.log(response.data);
-                const jwt = response.data.jwt;
-                const firstname = response.data.user.firstname;
+                if(response.data.user.roleType.includes('Correspondent')) {
+                    const jwt = response.data.jwt;
+                    const firstname = response.data.user.firstname;
+                    const roleType = response.data.user.roleType;
+    
+                    localStorage.setItem('jwt', jwt);
+                    localStorage.setItem('firstname', firstname);
+                    localStorage.setItem('roleType', roleType);
+    
+                    // push('/');
+                    window.location.replace('/');
+                } else {
+                    setAlert(['alert', 'Incorrect Credentials'])
+                }
 
-                localStorage.setItem('jwt', jwt);
-                localStorage.setItem('firstname', firstname);
-
-                // push('/');
-                window.location.replace('/');
                 resetForm();
             })
             .catch(error => {
@@ -110,7 +118,22 @@ const Login = () => {
                                     className="text-[#0033A1] hover:text-white border border-[#0033A1] hover:bg-[#0033A1] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 w-64"
                                 >
                                     {!isSubmitting && 'Login'}
-                                    {isSubmitting && 'Loading'}
+                                    {isSubmitting && 
+                                    <div style={{position: "relative", left: "40%"}}>
+                                        <Oval
+                                            height={30}
+                                            width={30}
+                                            color="#0033a1"
+                                            wrapperStyle={{}}
+                                            wrapperClass=""
+                                            visible={true}
+                                            ariaLabel='oval-loading'
+                                            secondaryColor="#8ab7e9"
+                                            strokeWidth={10}
+                                            strokeWidthSecondary={10}
+                                        />
+                                    </div>
+                                    }
                                 </button>
 
                             </Form>

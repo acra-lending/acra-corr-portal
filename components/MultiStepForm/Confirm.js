@@ -60,7 +60,7 @@ export default function Confirm(props) {
       console.log(error)
       })
 
-      // setTimeout(() => {next(); window.scrollTo(0,0) }, 2000);
+      setTimeout(() => {next(); window.scrollTo(0,0) }, 2000);
 
   }
 
@@ -94,7 +94,7 @@ export default function Confirm(props) {
       <h2 className="mb-5">Please confirm and submit</h2>
       <br/>
       <span className="block">Acra Broker ID or NMLS Number: {brokerId}</span>
-      <span className="block">Acra Lending Account Executive: {aeSelect}</span>
+      <span className="block">Acra Lending BDO: {aeSelect}</span>
       <span className="block">Branch NMLS ID Number: {branchId}</span>
       <span className="block">Company Name: {companyName}</span>
       <span className="block">Contact Name: {contactName}</span>
