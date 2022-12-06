@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from 'next/router';
 import SideBar from "../components/SideBar";
 import Navbar from '../components/NavBar'
+import Footer from '../components/Footer'
 import {Grid} from "react-loader-spinner";
 
 
@@ -60,6 +61,7 @@ function newSubmissionUpload({menuItems}) {
                     </div>
                 </div>
             )}
+            <Footer />
         </div>
     )
 }

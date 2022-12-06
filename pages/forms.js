@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from 'next/router';
 import SideBar from "../components/SideBar";
 import Navbar from '../components/NavBar'
+import Footer from '../components/Footer'
 import { fetcher } from "../lib/api";
 import useSWR from "swr";
 import {Grid} from "react-loader-spinner";
@@ -33,7 +34,7 @@ function formsTable({menuItems, formsItems}) {
 
     }, [isLogged]);
 
-    const URL = `https://1adc-107-194-134-60.ngrok.io/api/corr-portal-forms?pagination[page]=${pageNumber}&pagination[pageSize]=10&populate=*`;
+    const URL = `https://2da9-107-194-134-60.ngrok.io/api/corr-portal-forms?pagination[page]=${pageNumber}&pagination[pageSize]=10&populate=*`;
 
     const { data } = useSWR(URL,
         fetcher,
@@ -121,6 +122,7 @@ function formsTable({menuItems, formsItems}) {
                     </div>
                 </div>
             )}
+            <Footer />
     </div>
     )
 }

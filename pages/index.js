@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 // import { useRouter } from 'next/router'; 
 import SideBar from "../components/SideBar"
 import Navbar from '../components/NavBar'
+import Footer from '../components/Footer'
 import DashLinks from "../components/DashLinks";
 import Login from '../components/Login';
 import {Grid} from "react-loader-spinner";
@@ -46,8 +47,8 @@ export default function Home({menuItems, dashboardItems, useLinksItems}) {
   
                   <div className="md:flex static">
                   <SideBar props={menuItems}/>
-                    <div className="mx-auto md:pt-32">
-                        <h2 className="px-3 pb-2">Welcome, <b>{localStorage.firstname}</b>!</h2>
+                    <div className="mx-auto md:pt-24">
+                        <h2 className="px-3 pb-2 pt-3">Welcome, <b>{localStorage.firstname}</b>!</h2>
                         <h2 className="px-3 pb-2">Correspondent Portal Dashboard</h2>
 
   
@@ -82,7 +83,10 @@ export default function Home({menuItems, dashboardItems, useLinksItems}) {
                 </>
               )
             )}
+
         </main>
+        <Footer />
+
       </div>
   )
 }
