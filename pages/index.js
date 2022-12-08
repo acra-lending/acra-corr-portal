@@ -7,7 +7,7 @@ import DashLinks from "../components/DashLinks";
 import Login from '../components/Login';
 import {Grid} from "react-loader-spinner";
 
-export default function Home({menuItems, dashboardItems, useLinksItems}) {
+export default function Home({menuItems, dashboardItems}) {
 
   const [isLoading, setIsLoading] = useState(false);
   const [isLogged, setIsLogged] = useState();
@@ -110,15 +110,13 @@ export default function Home({menuItems, dashboardItems, useLinksItems}) {
 export async function getServerSideProps(context) {
   const [menuResponse, dashResponse, useLinksResponse] = await Promise.all([
     fetch(`${process.env.BASE_URL}/corr-portal-menu-items`),
-    fetch(`${process.env.BASE_URL}/corr-portal-dashboard-items?populate=*`),
-    fetch(`${process.env.BASE_URL}/broker-portal-useful-links-items?populate=*`)
+    fetch(`${process.env.BASE_URL}/corr-portal-dashboard-items?populate=*`)
   ]); 
 
-    const [menuItems, dashboardItems, useLinksItems] = await Promise.all([
+    const [menuItems, dashboardItems] = await Promise.all([
       menuResponse.json(),
-      dashResponse.json(),
-      useLinksResponse.json()
+      dashResponse.json()
     ]);
     
-    return { props: { menuItems, dashboardItems, useLinksItems } };
+    return { props: { menuItems, dashboardItems } };
 }
