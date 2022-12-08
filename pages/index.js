@@ -31,7 +31,7 @@ export default function Home({menuItems, dashboardItems, useLinksItems}) {
                 <Grid
                   height="80"
                   width="80"
-                  color="#8b67e9"
+                  color="#0033a1"
                   ariaLabel="grid-loading"
                   radius="12.5"
                   wrapperStyle={{}}

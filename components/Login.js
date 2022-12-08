@@ -26,7 +26,6 @@ const Login = () => {
 
         axiosWithBaseURL.post('/api/auth/local', values)
             .then(response => {
-                console.log(response.data);
                 if(response.data.user.roleType.includes('Correspondent')) {
                     const jwt = response.data.jwt;
                     const firstname = response.data.user.firstname;
