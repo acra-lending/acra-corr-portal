@@ -3,6 +3,7 @@ import axiosWithBaseURL from '../lib/nextstrapi-axios'
 import * as Yup from 'yup';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useRouter } from 'next/router';
+import {Oval} from "react-loader-spinner";
 
 const ResetPassword = () => {
     const { push, query } = useRouter();
