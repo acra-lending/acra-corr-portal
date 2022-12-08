@@ -7,7 +7,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserTie, faCreditCard, faFileInvoiceDollar, faLightbulb } from '@fortawesome/free-solid-svg-icons';
 import {Grid} from "react-loader-spinner";
 import Footer from '../components/Footer';
-function bankStatementAnalysis ({ menuItems, aeList }) {
+
+function BankStatementAnalysis ({ menuItems, aeList }) {
     const [isLogged, setIsLogged] = useState();
     const [isLoading, setIsLoading] = useState(false);
 
