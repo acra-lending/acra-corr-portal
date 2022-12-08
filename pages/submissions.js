@@ -1,32 +1,28 @@
 import { useState, useEffect } from "react";
-import { useRouter } from 'next/router';
+import Router from 'next/router';
 import SideBar from "../components/SideBar";
 import Navbar from '../components/NavBar'
 import Footer from '../components/Footer'
 import {Grid} from "react-loader-spinner";
 
 
-function newSubmissionUpload({menuItems}) {
+function NewSubmissionUpload({menuItems}) {
 
     const [isLogged, setIsLogged] = useState();
     const [isLoading, setIsLoading] = useState(false);
 
-    
-    const router = useRouter();
-
-    const fetchData = () => {
-        setIsLoading(true);
-        let token = localStorage.getItem('jwt');
-
-        if(token) {
-            setIsLogged(token);
-            setIsLoading(false);
-        } else {
-            router.push('/')
-        }
-    }
-
     useEffect(() => {
+        const fetchData = () => {
+            setIsLoading(true);
+            let token = localStorage.getItem('jwt');
+    
+            if(token) {
+                setIsLogged(token);
+                setIsLoading(false);
+            } else {
+                Router.push('/')
+            }
+        }
         
         fetchData();
 
@@ -74,4 +70,4 @@ export async function getServerSideProps(context) {
     };
   }
 
-export default newSubmissionUpload;
+export default NewSubmissionUpload;

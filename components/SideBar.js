@@ -38,7 +38,8 @@ export default function SideBar ({ props }) {
                 <nav className="pl-1 pr-1 md:min-w-[275px]">
                     <div>
                         <img 
-                            src="/AcraLogo.png" 
+                            src="/AcraLogo.png"
+                            alt="acra-logo"
                             style={{ 
                                 width: 'auto', 
                                 height: '50px', 

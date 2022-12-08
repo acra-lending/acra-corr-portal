@@ -1,19 +1,17 @@
 import { useState, useEffect } from "react";
-import { useRouter } from 'next/router';
+import Router from 'next/router';
 import SideBar from "../components/SideBar";
 import Navbar from "../components/NavBar";
 import Footer from '../components/Footer'
 import {Grid} from "react-loader-spinner";
 
-function formsTable({ menuItems, turnTimes }) {
+function FormsTable({ menuItems, turnTimes }) {
 
   const [isLogged, setIsLogged] = useState();
   const [isLoading, setIsLoading] = useState(false);
 
-  
-  const router = useRouter();
-
-  const fetchData = () => {
+  useEffect(() => {
+    const fetchData = () => {
       setIsLoading(true);
       let token = localStorage.getItem('jwt');
 
@@ -21,11 +19,9 @@ function formsTable({ menuItems, turnTimes }) {
           setIsLogged(token);
           setIsLoading(false);
       } else {
-          router.push('/')
+          Router.push('/')
       }
-  }
-
-  useEffect(() => {
+    }
       
       fetchData();
 
@@ -115,4 +111,4 @@ export async function getServerSideProps() {
   return { props: { menuItems, turnTimes } };
 }
 
-export default formsTable;
+export default FormsTable;

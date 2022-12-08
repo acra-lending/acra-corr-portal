@@ -22,7 +22,8 @@ export default function NavBar({props}) {
             <Link href="/">
               <a>
                 <img 
-                  src="/AcraLogo.png" 
+                  src="/AcraLogo.png"
+                  alt="acra-logo"
                   style={{ 
                       width: 'auto', 
                       height: '50px', 

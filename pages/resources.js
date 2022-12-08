@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useRouter } from 'next/router';
+import Router from 'next/router';
 import SideBar from "../components/SideBar";
 import Navbar from '../components/NavBar'
 import Footer from '../components/Footer'
@@ -7,28 +7,24 @@ import { fetcher } from "../lib/api";
 import useSWR from "swr";
 import {Grid} from "react-loader-spinner";
 
-function formsTable({menuItems, formsItems}) {
+function FormsTable({menuItems, formsItems}) {
     const [pageNumber, setPageNumber] = useState(1);
 
     const [isLogged, setIsLogged] = useState();
     const [isLoading, setIsLoading] = useState(false);
 
-    
-    const router = useRouter();
-
-    const fetchData = () => {
-        setIsLoading(true);
-        let token = localStorage.getItem('jwt');
-
-        if(token) {
-            setIsLogged(token);
-            setIsLoading(false);
-        } else {
-            router.push('/')
-        }
-    }
-
     useEffect(() => {
+        const fetchData = () => {
+            setIsLoading(true);
+            let token = localStorage.getItem('jwt');
+    
+            if(token) {
+                setIsLogged(token);
+                setIsLoading(false);
+            } else {
+                Router.push('/')
+            }
+        }
         
         fetchData();
 
@@ -87,7 +83,9 @@ function formsTable({menuItems, formsItems}) {
                                         <a 
                                             href={`${process.env.NEXT_PUBLIC_API_URL}${item?.attributes?.pdf?.data[0]?.attributes.url}`} 
                                             className="hover:bg-gray-50 text-[#0033A1] font-medium py-2 px-4 border border-[#0033A1] hover:border-transparent rounded no-underline"
-                                            target="_blank">
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            >
                                                 Download
                                         </a>
                                     </td>
@@ -141,4 +139,4 @@ export async function getServerSideProps() {
       return { props: { menuItems, formsItems } };
 }
 
-export default formsTable;
+export default FormsTable;

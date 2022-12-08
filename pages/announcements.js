@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import Router from 'next/router';
 import DataTable from 'react-data-table-component';
 import NavBar from '../components/NavBar';
 import SideBar from '../components/SideBar';
@@ -47,21 +47,18 @@ const Announcements = ({ menuItems, announcementsItems }) => {
     const options = [{value: '2022', label: '2022'}, {value: '2021', label: '2021'}];
     const items = announcementsItems.data.map(item => item.attributes);
 
-    const router = useRouter();
+    useEffect(() => {  
+      const fetchData = () => {
+        setIsLoading(true);
+        let token = localStorage.getItem('jwt');
 
-    const fetchData = () => {
-      setIsLoading(true);
-      let token = localStorage.getItem('jwt');
-
-      if(token) {
-        setIsLogged(token);
-        setIsLoading(false);
-      } else {
-          router.push('/')
+        if(token) {
+          setIsLogged(token);
+          setIsLoading(false);
+        } else {
+            Router.push('/')
+        }
       }
-    }
-
-    useEffect(() => {
 
       fetchData();
 
