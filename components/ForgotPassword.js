@@ -2,6 +2,7 @@ import { useState } from 'react';
 import axiosWithBaseURL from '../lib/nextstrapi-axios';
 import * as Yup from 'yup';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import {Oval} from "react-loader-spinner";
 
 const ForgotPassword = () => {
     const [alert,setAlert] = useState();
