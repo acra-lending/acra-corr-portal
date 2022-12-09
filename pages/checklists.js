@@ -64,7 +64,7 @@ function FormsTable({menuItems, formsItems}) {
                 <div className="md:flex relative">
                     <SideBar props={menuItems}/>
                     <div className="flex-1 p-10 text-2xl bg-slate-50 md:w-2/3 h-screen md:pt-32 sm:pt-6" >
-                        <div className="relative rounded-xl overflow-auto">
+                        <div className="relative rounded-xl overflow-auto sm:pb-20">
                             <table className="border-collapse table-auto w-full text-sm">
                                 <thead>
                                 <tr>
@@ -93,7 +93,7 @@ function FormsTable({menuItems, formsItems}) {
                                 ))}
                                 </tbody>
                             </table>
-                            <div className="flex justify-center mt-4 gap-4 pb-4">
+                            <div className="flex justify-center mt-4 gap-4">
                                 <button
                                 className={`inline-flex items-center py-2 px-4 text-sm font-medium text-gray-500 rounded-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white ${
                                     pageNumber === 1 ? 'bg-gray-300' : 'bg-white'

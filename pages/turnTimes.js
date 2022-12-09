@@ -51,9 +51,9 @@ function FormsTable({ menuItems, turnTimes }) {
       ) : (
         <div className="md:flex relative">
           <SideBar props={menuItems} />
-          <div className="flex-1 p-10 text-2xl bg-slate-50 md:w-2/3 h-screen md:pt-32 sm:pt-4">
-            <div className="relative rounded-xl overflow-auto">
-              <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+          <div className="flex-1 p-10 text-2xl bg-slate-50 md:w-2/3 h-screen md:pt-32 sm:pt-4 sm:pb-20">
+            <div className="relative rounded-xl overflow-auto sm:pb-20">
+              <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 sm:pb-20">
                 <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                   <tr>
                     <th scope="col" className="py-3 px-6">
@@ -75,7 +75,7 @@ function FormsTable({ menuItems, turnTimes }) {
                   <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" key={turnTime.id}>
                       <th
                           scope="row"
-                          className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                          className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-slate-400"
                       >
                           {turnTime.attributes.category}
                       </th>
