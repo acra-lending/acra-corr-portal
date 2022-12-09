@@ -75,7 +75,7 @@ function FormsTable({ menuItems, turnTimes }) {
                   <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" key={turnTime.id}>
                       <th
                           scope="row"
-                          className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-slate-400"
+                          className="py-4 px-6 font-medium text-slate-900 dark:text-slate-600 whitespace-nowrap"
                       >
                           {turnTime.attributes.category}
                       </th>
