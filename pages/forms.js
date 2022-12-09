@@ -63,7 +63,7 @@ function FormsTable({menuItems, formsItems}) {
             ) : (
                 <div className="md:flex relative">
                     <SideBar props={menuItems}/>
-                    <div className="flex-1 p-10 text-2xl bg-slate-50 md:w-2/3 h-screen md:pt-32 sm:pt-6" >
+                    <div className="flex-1 p-10 text-2xl bg-slate-50 md:w-2/3 h-screen md:pt-32 sm:pt-6 sm:px-2" >
                         <div className="relative rounded-xl overflow-auto sm:pb-20">
                             <table className="border-collapse table-auto w-full text-sm">
                                 <thead>
