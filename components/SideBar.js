@@ -65,7 +65,7 @@ export default function SideBar ({ props }) {
                 </div>
                 <div>
                     <Link href="/auth/logout">
-                        <a className="text-lg font-medium md:hidden no-underline">
+                        <a className="text-sm font-medium md:hidden no-underline">
                             <li 
                                 className={"flex items-center gap-3 p-3 rounded"} 
                             >
