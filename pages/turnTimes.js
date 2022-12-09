@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import Router from 'next/router';
 import SideBar from "../components/SideBar";
 import Navbar from "../components/NavBar";
-import Footer from '../components/Footer'
 import {Grid} from "react-loader-spinner";
 
 function FormsTable({ menuItems, turnTimes }) {
@@ -59,12 +58,6 @@ function FormsTable({ menuItems, turnTimes }) {
                     <th scope="col" className="py-3 px-6">
                       Category
                     </th>
-                    {/* <th scope="col" className="py-3 px-6">
-                      
-                    </th>
-                    <th scope="col" className="py-3 px-6">
-                    
-                    </th> */}
                     <th scope="col" className="py-3 px-6">
                       Time
                     </th>
@@ -79,10 +72,7 @@ function FormsTable({ menuItems, turnTimes }) {
                       >
                           {turnTime.attributes.category}
                       </th>
-                    {/* <td className="py-4 px-6"></td>
-                    <td className="py-4 px-6"></td> */}
                     <td className="py-4 px-2">{turnTime.attributes.time}</td>
-                    {/* <td className="py-4 px-2 text-right"></td> */}
                   </tr>
                   ))}
                 </tbody>
@@ -92,7 +82,6 @@ function FormsTable({ menuItems, turnTimes }) {
         </div>
 
       )}
-      {/* <Footer /> */}
     </div>
   );
 }

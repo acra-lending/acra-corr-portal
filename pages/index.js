@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import SideBar from "../components/SideBar"
 import Navbar from '../components/NavBar'
-import Footer from '../components/Footer'
 import DashLinks from "../components/DashLinks";
 import Login from '../components/Login';
 import {Grid} from "react-loader-spinner";
@@ -19,7 +18,6 @@ export default function Home({menuItems, dashboardItems}) {
     setIsLoading(false);
   }, []);
 
-  // const router = useRouter();
   return (
     <div className="relative w-full h-full">
       <Navbar />
@@ -84,8 +82,6 @@ export default function Home({menuItems, dashboardItems}) {
             )}
 
         </main>
-        {/* <Footer /> */}
-
       </div>
   )
 }

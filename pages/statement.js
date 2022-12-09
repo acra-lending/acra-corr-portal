@@ -6,7 +6,6 @@ import SideBar from '../components/SideBar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserTie, faCreditCard, faFileInvoiceDollar, faLightbulb } from '@fortawesome/free-solid-svg-icons';
 import {Grid} from "react-loader-spinner";
-import Footer from '../components/Footer';
 
 function BankStatementAnalysis ({ menuItems, aeList }) {
     const [isLogged, setIsLogged] = useState();
@@ -103,7 +102,6 @@ function BankStatementAnalysis ({ menuItems, aeList }) {
                             </div>
                     </div>
                 )}
-                {/* <Footer /> */}
         </div>
     )
 }
