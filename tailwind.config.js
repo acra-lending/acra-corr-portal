@@ -12,6 +12,9 @@ module.exports = {
         'preScreen': "url('/pre-screen-instructions.jpg')",
         'index': "url('/bg.svg')"
       },
+      screens: {
+        'xs': '340px'
+      }
     },
   },
   plugins: [

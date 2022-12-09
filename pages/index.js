@@ -84,7 +84,7 @@ export default function Home({menuItems, dashboardItems}) {
             )}
 
         </main>
-        <Footer />
+        {/* <Footer /> */}
 
       </div>
   )

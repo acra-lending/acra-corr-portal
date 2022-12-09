@@ -57,7 +57,7 @@ function NewSubmissionUpload({menuItems}) {
                     </div>
                 </div>
             )}
-            <Footer />
+            {/* <Footer /> */}
         </div>
     )
 }

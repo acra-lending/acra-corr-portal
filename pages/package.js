@@ -56,7 +56,7 @@ function PurchasePackageUpload({menuItems}) {
                     </div>
                 </div>
             )}
-            <Footer />
+            {/* <Footer /> */}
         </div>
     )
 }

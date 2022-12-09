@@ -55,7 +55,7 @@ function PurchasingConditionsUpload({menuItems}) {
                     </div>
                 </div>
             )}
-            <Footer />
+            {/* <Footer /> */}
         </div>
     )
 }

@@ -92,7 +92,7 @@ function FormsTable({ menuItems, turnTimes }) {
         </div>
 
       )}
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

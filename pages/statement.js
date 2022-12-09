@@ -103,7 +103,7 @@ function BankStatementAnalysis ({ menuItems, aeList }) {
                             </div>
                     </div>
                 )}
-                <Footer />
+                {/* <Footer /> */}
         </div>
     )
 }

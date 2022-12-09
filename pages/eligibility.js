@@ -56,7 +56,7 @@ function EligibilityUpload({menuItems}) {
                     </div>
                 </div>
             )}
-            <Footer/>
+            {/* <Footer/> */}
         </div>
     )
 }

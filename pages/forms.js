@@ -120,7 +120,7 @@ function FormsTable({menuItems, formsItems}) {
                     </div>
                 </div>
             )}
-            <Footer />
+            {/* <Footer /> */}
     </div>
     )
 }

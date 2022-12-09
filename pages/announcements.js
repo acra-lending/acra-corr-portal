@@ -3,7 +3,6 @@ import Router from 'next/router';
 import DataTable from 'react-data-table-component';
 import NavBar from '../components/NavBar';
 import SideBar from '../components/SideBar';
-import Footer from '../components/Footer'
 import Select from 'react-select';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faX } from '@fortawesome/free-solid-svg-icons';
@@ -144,7 +143,6 @@ const Announcements = ({ menuItems, announcementsItems }) => {
             </div>
           </div>
         )}
-        <Footer />
       </div>
     ) : (
       <div />
