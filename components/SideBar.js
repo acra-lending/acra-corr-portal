@@ -15,8 +15,8 @@ export default function SideBar ({ props }) {
     const router = useRouter(); 
 
     //Classnames for div and tabs
-    const sideBarDeskTopClassNames = 'min-h-screen min-w-fit bg-white w-64 z-10 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out border-r';
-    const sideBarMobileClassNames = 'min-h-screen min-w-fit z-40 bg-white fixed inset-y-0 left-0 transform md:relative md:translate-x-0 transition duration-200 ease-in-out border-r shadow-md';
+    const sideBarDeskTopClassNames = 'min-h-screen min-w-fit bg-white w-64 z-10 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out border-r overflow-y-scroll';
+    const sideBarMobileClassNames = 'min-h-screen min-w-fit z-40 bg-white fixed inset-y-0 left-0 transform md:relative md:translate-x-0 transition duration-200 ease-in-out border-r shadow-md overflow-y-scroll';
     const activeTabClassNames = 'flex items-center gap-3 bg-[#0033A1] text-white p-3 rounded';
     const tabClassNames = 'flex items-center gap-3 p-3 rounded hover:bg-[#f3f4f6]';
    
