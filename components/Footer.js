@@ -4,7 +4,7 @@ export default function Footer() {
 
   return (
     <>
-        <footer className="py-2 px-4 bg-white shadow font-sans border md:flex md:items-center justify-end md:p-6 dark:bg-gray-800 w-full z-0 fixed bottom-0">
+        <footer className="fixed py-2 px-4 bg-white shadow font-sans border md:flex md:items-center justify-end md:p-6 dark:bg-gray-800 w-full bottom-0 left-0">
             {/* <ul className="flex flex-wrap items-center mt-3 px-8 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
                 <li>
                     <a href="#" className="mr-4 no-underline hover:underline text-gray-500 hover:text-blue-700 md:mr-6 ">About</a>
@@ -19,7 +19,7 @@ export default function Footer() {
                     <a href="#" className="no-underline hover:underline text-gray-500 hover:text-blue-700">Contact</a>
                 </li>
             </ul> */}
-            <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400 px-8">© {new Date().getFullYear()} Acra Lending. All Rights Reserved.
+            <span className="text-sm text-gray-500 sm:text-center sm:px-1 dark:text-gray-400 px-8">© {new Date().getFullYear()} Acra Lending. All Rights Reserved.
             </span>
         </footer>
     </>

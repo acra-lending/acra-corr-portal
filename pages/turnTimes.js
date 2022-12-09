@@ -51,7 +51,7 @@ function FormsTable({ menuItems, turnTimes }) {
       ) : (
         <div className="md:flex relative">
           <SideBar props={menuItems} />
-          <div className="flex-1 p-10 text-2xl bg-slate-50 md:w-2/3 h-screen pt-32">
+          <div className="flex-1 p-10 text-2xl bg-slate-50 md:w-2/3 h-screen md:pt-32 sm:pt-4">
             <div className="relative rounded-xl overflow-auto">
               <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -59,12 +59,12 @@ function FormsTable({ menuItems, turnTimes }) {
                     <th scope="col" className="py-3 px-6">
                       Category
                     </th>
-                    <th scope="col" className="py-3 px-6">
+                    {/* <th scope="col" className="py-3 px-6">
                       
                     </th>
                     <th scope="col" className="py-3 px-6">
                     
-                    </th>
+                    </th> */}
                     <th scope="col" className="py-3 px-6">
                       Time
                     </th>
@@ -79,10 +79,10 @@ function FormsTable({ menuItems, turnTimes }) {
                       >
                           {turnTime.attributes.category}
                       </th>
-                    <td className="py-4 px-6"></td>
-                    <td className="py-4 px-6"></td>
-                    <td className="py-4 px-6">{turnTime.attributes.time}</td>
-                    <td className="py-4 px-6 text-right"></td>
+                    {/* <td className="py-4 px-6"></td>
+                    <td className="py-4 px-6"></td> */}
+                    <td className="py-4 px-2">{turnTime.attributes.time}</td>
+                    {/* <td className="py-4 px-2 text-right"></td> */}
                   </tr>
                   ))}
                 </tbody>

@@ -130,7 +130,7 @@ const Announcements = ({ menuItems, announcementsItems }) => {
           <div className="md:flex relative">
             <SideBar props={menuItems} />
 
-            <div className="mt-20 w-full overflow-x-scroll">
+            <div className="md:mt-20 w-full overflow-x-scroll sm:mt-2 sm:pb-20">
               <DataTable
                 columns={columns}
                 data={filteredItems}

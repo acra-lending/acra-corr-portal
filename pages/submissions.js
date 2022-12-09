@@ -52,7 +52,7 @@ function NewSubmissionUpload({menuItems}) {
             ) : (
                 <div className="md:flex relative">
                     <SideBar props={menuItems} />
-                    <div className="md:flex p-10 md:w-2/3 pt-18 justify-center m-auto">
+                    <div className="md:flex p-10 md:w-2/3 pt-18 justify-center m-auto sm:p-4">
                         <iframe className="md:w-8/12 w-full aspect-video min-h-[510px]" src="https://acralending.com/box-api/box-corr-upload.html?var=3.html"></iframe>
                     </div>
                 </div>

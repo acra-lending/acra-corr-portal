@@ -46,7 +46,7 @@ export default function Home({menuItems, dashboardItems}) {
   
                   <div className="md:flex static">
                   <SideBar props={menuItems}/>
-                    <div className="mx-auto md:pt-24">
+                    <div className="mx-auto md:pt-24 sm:pb-20">
                         <h2 className="px-3 pb-2 pt-3">Welcome, <b>{localStorage.firstname}</b>!</h2>
                         <h2 className="px-3 pb-2">Correspondent Portal Dashboard</h2>
 
@@ -59,10 +59,10 @@ export default function Home({menuItems, dashboardItems}) {
                 </>
               ) : (
                 <>
-                  <div className="h-screen px-12 flex space-x-4 flex-col xl:flex-row xl:px-32 lg:flex-row lg:px-24 md:flex-row md:px-24 md:pt-32 sm:flex sm:flex-col bg-index">
+                  <div className="h-screen px-12 flex space-x-4 flex-col xl:flex-row xl:px-32 lg:flex-row lg:px-24 md:flex-row md:px-24 md:pt-32 sm:flex sm:flex-col sm:space-x-0 sm:px-6 bg-index">
                     <div>
-                      <h2 className="text-white pt-10">Correspondent Portal</h2>
-                      <h4 className="text-white pt-10">Welcome, please log in. <br/><br/>If this is your first time logging in since the update, you have to reset your password with "Forgot password"</h4>
+                      <h2 className="text-white pt-10 sm:pt-4">Correspondent Portal</h2>
+                      <h4 className="text-white pt-10 sm:py-2">Welcome, please log in. <br/><br/>If this is your first time logging in since the update, you have to reset your password with "Forgot password"</h4>
                     </div>
                     {alert && (
                 
