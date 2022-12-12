@@ -16,6 +16,7 @@ const columns = [
         sortable: true
     },
     {
+        id: 'publishDate',
         name: 'Publish Date',
         selector: row => row.publishDate,
         sortable: true
@@ -139,6 +140,9 @@ const Announcements = ({ menuItems, announcementsItems }) => {
                 subHeader
                 subHeaderComponent={subHeaderComponentMemo}
                 persistTableHead
+                defaultSortFieldId="publishDate"
+                defaultSortAsc={false}
+                striped={true}
               />
             </div>
           </div>
