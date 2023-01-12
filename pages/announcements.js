@@ -44,7 +44,7 @@ const Announcements = ({ menuItems, announcementsItems }) => {
     const [isLogged, setIsLogged] = useState();
     const [isLoading, setIsLoading] = useState(false);
 
-    const options = [{value: '2022', label: '2022'}, {value: '2021', label: '2021'}];
+    const options = [{value: '2023', label: '2023'}, {value: '2022', label: '2022'}, {value: '2021', label: '2021'}];
     const items = announcementsItems.data.map(item => item.attributes);
 
     useEffect(() => {  
