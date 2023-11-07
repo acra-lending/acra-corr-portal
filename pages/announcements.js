@@ -161,9 +161,8 @@ export async function getServerSideProps() {
   
       const [menuItems, announcementsItems] = await Promise.all([
         menuResponse.json(),
-        announcementsResponse.json()
+        announcementsResponse.json(),
       ]);
-
       return { props: { menuItems, announcementsItems } };
 }
 

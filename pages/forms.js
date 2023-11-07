@@ -11,6 +11,7 @@ function FormsTable({menuItems, formsItems}) {
     const [pageNumber, setPageNumber] = useState(1);
     const [isLogged, setIsLogged] = useState();
     const [isLoading, setIsLoading] = useState(false);
+    // const [itemNumber,setItemNumber] = useState(8);
 
     useEffect(() => {
         const fetchData = () => {
@@ -40,6 +41,7 @@ function FormsTable({menuItems, formsItems}) {
 
     return (
         <div className="relative w-full">
+            <>{}</>
             <Navbar />
             {isLoading ? (
                 <div className="md:flex relative">
@@ -72,13 +74,12 @@ function FormsTable({menuItems, formsItems}) {
                                 </tr>
                                 </thead>
                                 <tbody className="bg-white dark:bg-slate-800">
-                                {data.data.map((item, key) => (
-                                    
+                                {data?.data?.map((item, key) => (
                                 <tr key={key}>
                                     <td className="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">{item.attributes.formTitle}</td>
                                     <td className="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-slate-500 dark:text-slate-400 pl-0">
                                         <a 
-                                            href={`${process.env.NEXT_PUBLIC_API_URL}${item?.attributes?.pdf?.data[0]?.attributes.url}`} 
+                                            href={`${process.env.NEXT_PUBLIC_API_URL}${item?.attributes?.pdf?.data[0]?.attributes?.url}`} 
                                             className="hover:bg-gray-50 text-[#0033A1] font-medium py-2 px-4 border border-[#0033A1] hover:border-transparent rounded no-underline"
                                             target="_blank"
                                             rel="noreferrer"
@@ -96,7 +97,7 @@ function FormsTable({menuItems, formsItems}) {
                                     pageNumber === 1 ? 'bg-gray-300' : 'bg-white'
                                 }`}
                                 disabled={pageNumber === 1}
-                                onClick={() => setPageNumber(pageNumber - 1)}
+                                onClick={() => {setPageNumber(pageNumber - 1)}}
                                 >
                                 {' '}
                                 Previous
@@ -108,7 +109,7 @@ function FormsTable({menuItems, formsItems}) {
                                     : 'bg-white'
                                 }`}
                                 disabled={pageNumber === (data && data.meta.pagination.pageCount)}
-                                onClick={() => setPageNumber(pageNumber + 1)}
+                                onClick={() =>{setPageNumber(pageNumber + 1);}}
                                 >
                                 Next
                                 </button>
