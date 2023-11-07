@@ -16,13 +16,15 @@ function DashLinks ({ props }) {
                 href="https://acracorrespondent.loannex.com/" target="_blank"
                 rel="noreferrer"
             >
+
                 <a className='text-black no-underline'>
                     <div className="flex items-center justify-center hover:scale-105 gap-3 cursor-pointer break-normal font-medium text-lg p-6 bg-white border-1 rounded-xl drop-shadow-lg">
                         <SVG 
                             src={svgIcon}
                             width={35}
                         />
-                        Pricing Engine & Detailed Eligibility
+                        {/* Pricing Engine & Detailed Eligibility */}
+                        Pricing Engine, Registration, Lock
                     </div>
                 </a>
             </a>
