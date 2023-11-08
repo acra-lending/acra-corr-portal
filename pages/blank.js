@@ -16,7 +16,7 @@ function Page ({menuItems}){
             if(token) {
                 setIsLogged(token);
                 setIsLoading(false);
-                location.replace(' https://www.evolvemtgs.com/Client/');
+                location.replace('https://www.evolvemtgs.com/client/AcraLending.asp');
             } else {
                 Router.push('/')
             }
