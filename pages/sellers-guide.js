@@ -32,7 +32,7 @@ function FormsTable({menuItems, formsItems}) {
 
     }, [isLogged]);
 
-    const URL = `http://localhost:1346/sellers-guides?populate=*`;
+    const URL = `${process.env.NEXT_PUBLIC_API_URL}/api/sellers-guides?populate=*`;
     const { data } = useSWR(URL,
         fetcher,
         {
@@ -67,7 +67,7 @@ function FormsTable({menuItems, formsItems}) {
                         <div className="relative rounded-xl overflow-auto sm:pb-20 flex justify-center">
                         <div style={{height:"700px"}}>
                          <div>  
-                        <Document file={`${process.env.NEXT_PUBLIC_API_URL}/uploads/Sellers_Guide_2023_09_01_80caf2673a.pdf`}  onLoadSuccess={({ numPages }) => {console.log(numPages,97);setNumPages(numPages)}}>  
+                        <Document file={`${process.env.NEXT_PUBLIC_API_URL}${data.data[0].attributes.pdf.data[0].attributes.url}`}  onLoadSuccess={({ numPages }) => {setNumPages(numPages)}}>  
                            {Array.from({ length: numPages }, (_, index) => (
                              <Page key={`page_${index + 1}`} pageNumber={index + 1}  renderTextLayer={false} renderAnnotationLayer={false} width={1200} height={700}/>
                             ))}
