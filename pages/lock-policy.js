@@ -10,7 +10,7 @@ import * as pdfjs from 'pdfjs-dist';
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
-function FormsTable({menuItems, formsItems}) {
+function LockPolicy({menuItems, pdfFile}) {
 
     const [isLogged, setIsLogged] = useState();
     const [isLoading, setIsLoading] = useState(false);
@@ -32,13 +32,15 @@ function FormsTable({menuItems, formsItems}) {
 
     }, [isLogged]);
 
-    const URL = `${process.env.NEXT_PUBLIC_API_URL}/api/sellers-guides?populate=*`;
+    const URL = `${process.env.NEXT_PUBLIC_API_URL}/api/lock-policies?populate=*`;
     const { data } = useSWR(URL,
         fetcher,
         {
-            fallbackData: formsItems
+            fallbackData: pdfFile
         }
     );
+
+    console.log(data);
     return (
         <div className="relative w-full">
             <Navbar />
@@ -85,15 +87,15 @@ function FormsTable({menuItems, formsItems}) {
 export async function getServerSideProps() {
     const [menuResponse, formsResponse] = await Promise.all([
       fetch(`${process.env.BASE_URL}/corr-portal-menu-items`),
-      fetch(`${process.env.BASE_URL}/sellers-guides?populate=*`)
+      fetch(`${process.env.BASE_URL}/lock-policies?populate=*`)
     ]); 
   
-      const [menuItems, formsItems] = await Promise.all([
+      const [menuItems, pdfFile] = await Promise.all([
         menuResponse.json(),
         formsResponse.json()
       ]);
       
-      return { props: { menuItems, formsItems } };
+      return { props: { menuItems, pdfFile } };
 }
 
-export default FormsTable;
+export default LockPolicy;

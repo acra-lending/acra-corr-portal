@@ -22,9 +22,15 @@ function PurchasingConditionsUpload({menuItems}) {
             }
         }
         
-        fetchData();
+        fetchData();   
 
     }, [isLogged]);
+
+    function Redirect (){
+        useEffect(()=>{
+            location.replace(' https://www.evolvemtgs.com/Client/AcraLending.asp');
+        })
+    }
     return (
         <div className="relative w-full">
             <Navbar />
@@ -50,7 +56,7 @@ function PurchasingConditionsUpload({menuItems}) {
                 <div className="md:flex relative">
                     <SideBar props={menuItems} />
                     <div className="md:flex p-10 md:w-2/3 pt-18 justify-center m-auto sm:p-4">
-                        <iframe className="md:w-8/12 w-full aspect-video min-h-[510px]" src="https://acralending.com/box-api/box-corr-package-upload.html?var=1"></iframe>
+                       <Redirect/>
                     </div>
                 </div>
             )}
